@@ -1,0 +1,1 @@
+{"nfs":{"/var/www/symfony":{"type":"nfs","guestpath":"/var/www/symfony","hostpath":"/Users/lmeni/SymfonyProject/project","disabled":false,"map_uid":503,"map_gid":20,"nfs_udp":true,"nfs_version":3,"uuid":"1748055911"}},"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/lmeni/SymfonyProject","disabled":false}}}
