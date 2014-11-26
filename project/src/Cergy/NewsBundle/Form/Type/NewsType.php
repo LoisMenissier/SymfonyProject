@@ -29,7 +29,11 @@ class NewsType extends AbstractType{
             ->add('content', 'textarea', [
                 'required' => true,
                 'label' => 'Contenu'
-            ]);
+            ])
+            ->add('author', 'entity', array(
+                'class' => 'Cergy\UserBundle\Entity\User',
+                'property' => 'username'
+            ));
     }
 
     /**

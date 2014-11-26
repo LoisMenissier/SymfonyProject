@@ -3,14 +3,24 @@
 {% block body %}
     <form method="POST">
         <div>
-            {{ form_row(form.title,   {'attr':{'placeholder':'Titre de la news' } })}}
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title, {'attr':{'placeholder':'Titre de la news' } })}}
             {{ form_errors(form.title) }}
         </div>
 
         <div>
-            {{ form_row(form.content,   {'attr':{'placeholder':'Contenu de la news' } })}}
+            {{ form_label(form.content) }}
+            {{ form_widget(form.content, {'attr':{'placeholder':'Contenu de la news' } })}}
             {{ form_errors(form.content) }}
         </div>
+
+        <div>
+            {{ form_label(form.author) }}
+            {{ form_widget(form.author) }}
+            {{ form_errors(form.author) }}
+        </div>
+
+        {{ form_rest(form) }}
         <input type="submit"/>
     </form>
 {% endblock body %}

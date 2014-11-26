@@ -49,6 +49,28 @@ class News
     private $updatedAt;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Cergy\UserBundle\Entity\User", inversedBy="news")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id", nullable=false)
+     */
+    protected $author;
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
      * @return mixed
      */
     public function getContent()

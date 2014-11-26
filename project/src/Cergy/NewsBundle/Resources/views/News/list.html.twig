@@ -8,18 +8,31 @@
 {% block body %}
     {{ parent() }}
     <h1>My news</h1>
-{% for n in news %}
+
+    {% if app.session.flashBag.has('success') %}
+        <ul>
+            {% for message in app.session.flashBag.get('success') %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 <div class="row">
-    <div class="col-sm-6 col-md-4">
+{% for n in news %}
+    <div class="col-sm-6 col-md-4 col-lg-2">
         <div class="thumbnail">
             <img data-src="holder.js/300x300">
             <div class="caption">
                 <h3>{{ n.title }}</h3>
         <p>{{ n.content }}</p>
-        <p><a href="#" class="btn btn-primary" role="button">Created : </a>     {{ n.createdAt|date('d-m-Y h:i') }}</p>
-        <p><a href="#" class="btn btn-primary" role="button">Updated : </a>     {{ n.updatedAt|date('d-m-Y h:i') }}</p>
-        </div>
+        Created : {{ n.createdAt|date('d-m-Y h:i') }}
+        Updated : {{ n.updatedAt|date('d-m-Y h:i') }}
+        Author : {{ n.author }}
+        <p><a href="{{ path('news_update', {'id': n.id}) }}" class="btn btn-primary" role="button">Edit</a></p>
+        <p><a href="{{ path('news_delete', {'id': n.id}) }}" class="btn btn-primary" role="button">Destroy</a></p>
+
+            </div>
     </div>
-</div>
+    </div>
 {% endfor %}
+</div>
 {% endblock %}
