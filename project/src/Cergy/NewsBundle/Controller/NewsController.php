@@ -28,6 +28,11 @@ class NewsController extends Controller
         if ($request->isMethod('POST')){
             $form->handleRequest($request);
 
+                $em = $this->getDoctrine()->getManager();
+                /*Flag de l'entité à sauvegarder*/
+                $em->persist($form->getData());
+                /*Toutes les classes mises dans l'entityManager vont être sauvegardées*/
+                $em->flush();
         }
 
         return $this->render('CergyNewsBundle:News:create.html.twig', [
